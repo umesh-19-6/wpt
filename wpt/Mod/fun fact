@@ -1,0 +1,22 @@
+*Module.2*
+
+function factorial(n){
+    var f=1;
+    for(var i=1;i<=n;i++){
+        f=f*i
+    }
+    return f;
+}
+exports.combination=function(n,r){
+    var ans=factorial(n)/factorial(n-r);
+    return ans;
+}
+exports.permutation=function(n,r){
+    var ans=factorial(n)/factorial(n-r)*factorial(r);
+    return ans;
+}
+
+*UseModule*
+const m2=require('./module2')
+console.log("Combination : "+m2.combination(6,4));
+console.log("Permutation : "+m2.Permutation(10,2));
