@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const validateTextBox =(id,errid)=>{
+            var val=document.getElementById(id).value;
+            console.log("value : "+val)
+            if(val!== "" && val.trim().length>0 && !isFinite(val)){
+                console.log("in if : ")
+                document.getElementById(errid).innerHTML="";
+                return true;
+            }
+            console.log("outside if : ")
+            document.getElementById(errid).innerHTML="invalid name";
+            return false;
+        }
+        function validateRadiobutton(nm,errid){
+            var degree=document.getElementsByName(nm);
+            for(var i=0;i<degree.length;i++){
+                if(degree[i].checked){
+                    document.getElementById(errid).innerHTML=""
+                    return true;
+                }
+            }
+            document.getElementById(errid).innerHTML="pls select one option";
+            return false;
+
+        }
+        function validatedata(){
+            var flag = validateTextBox("nm","errnm");
+            var flag1=validateRadiobutton("degree","errdegree")
+            return flag && flag1;
+        }
+    </script>
+</head>
+<body>
+    <table>
+    <form onsubmit="return validatedata()">
+        <input type="hidden" name="hidden" id="h" value="34" >
+        <tr>
+            <td></td>
+            <td><input type="text" name="uid" id="uid" value="1234566" readonly></td>
+        
+        </tr> 
+        <tr>
+            <td><label for="nm">Name : </label></td>
+            <td><input type="text" name="name" id="nm"/></td>
+            <td id="errnm"></td>
+        </tr>
+        <tr>
+            <td><label id="addr">Address : </label></td>
+            <td><textarea cols="25" rows="5" name="address" id="addr"></textarea></td>
+        </tr>
+        <tr>
+            <td><label>Gender</label></td>
+            <td><input type="radio" name="gender" id="male" value="male"><label for="male" >Male</label>
+            <input type="radio" name="gender" id="female" value="female"><label for="female">Female</label></td>
+            
+        </tr>
+        <tr>
+            <td><label>Degree</label></td>
+            <td><input type="radio" name="degree" id="BE" value="BE"><label for="BE" >BE</label>
+            <input type="radio" name="degree" id="BTech" value="BTech"><label for="BTech">BTech</label>
+            <input type="radio" name="degree" id="BSC" value="BSC"><label for="BSC">BSC</label></td>
+            <td id="errdegree"></td>
+        </tr>
+        <tr>
+            <td><label>Skills</label></td>
+            <td>
+                <input type="checkbox" name="skills" id="java" value="java"><label for="java">Java</label>
+
+                <input type="checkbox" name="skills" id="C++" value="C++"><label for="C++">C++</label>
+
+                <input type="checkbox" name="skills" id="Python" value="Python"><label for="Python">Python</label>
+                <br>
+                <input type="checkbox" name="skills" id="Linux" value="Linux"><label for="Linux">Linux</label>
+
+                <input type="checkbox" name="skills" id="Perl" value="Perl"><label for="Perl">Perl</label>
+
+                <input type="checkbox" name="skills" id="ML" value="ML"><label for="ML">ML</label>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>Profile : </td>
+            <td>
+                <input type="file" name="file" id="file">
+            </td>
+        </tr>
+        <tr>
+            <td><label>City: </label></td>
+            <td>
+                <select name="city" id="city">
+                  <option value="test">----select one---</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Banglore">Banglore</option>
+                </select>
+        </td>
+        </tr>
+        <tr>
+            <td><label>Date of joining </label></td>
+            <td><input type="date" name="dt" id="doj" min="2024-10-12" max="2024-12-28"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" name="register" id="register" value="register">Register me</button></td>
+        </tr>
+    </form>
+   </table>
+</body>
+</html>

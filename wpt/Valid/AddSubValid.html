@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculate(event){
+           //alert("in calculate function");
+           //retrieve the value of the text box with id n1
+           var n1=parseInt(document.getElementById("n1").value)
+           var n2=parseInt(document.getElementById("n2").value)
+           var op=event.target.id;
+           switch(op){
+            case "add":
+                var ans=n1+n2
+                break;
+            case "sub":
+                var ans=n1-n2
+                break;
+           }
+           
+           //alert("addition : "+ans);
+           //document.write("addition : "+ans)
+           document.getElementById("mydiv").innerHTML=`N1: ${n1} N2: ${n2} Result : ${ans}`
+           document.getElementById("n1").value="";
+           document.getElementById("n2").value="";
+        }
+       const setyellow=function(ev){
+        console.log("focus: "+ev.target.id)
+        ev.target.style="background-color:yellow"
+       }
+       const setwhite=function(ev){
+        console.log("blur   " +ev.target.id)
+        ev.target.style="background-color:white"
+       }
+    </script>
+</head>
+<body>
+    
+    <form>
+        Number 1: <input type="text" name="num1" id="n1" autofocus  onfocus="setyellow(event)" onblur="setwhite(event)">
+        Number 2: <input type="text" name="num2" id="n2" onfocus="setyellow(event)" onblur="setwhite(event)">
+        <button type="button" name="btn" id="add" value="add" onclick="calculate(event)">Addition</button>
+        <button type="button" name="btn" id="sub" value="sub" onclick="calculate(event)">Addition</button>
+    </form>
+    <div id="mydiv">
+
+    </div>
+</body>
+</html>
